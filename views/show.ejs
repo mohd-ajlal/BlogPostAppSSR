@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= post.title %></title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <%- include("components/navbar") %>
+
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title"><%= post.title %></h1>
+        <p class="card-text"><%= post.content %></p>
+        <p class="card-text"><strong>Comments:</strong> <%= post.comments %></p>
+        <p class="card-text"><strong>Tag:</strong> <%= post.tag %></p>
+        <a href="/posts/<%= post._id %>/edit" class="btn btn-secondary">Edit</a>
+        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" style="display:inline;">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        <a href="/posts" class="btn btn-primary">Back to Posts</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Posts</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <%- include("components/navbar") %>
+  <div class="container mt-5">
+    <h1 class="mb-4">Blog Posts</h1>
+    <div class="row">
+      <% posts.forEach(post => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= post.content.substring(0, 100) %>...</p>
+              <p class="card-text"><strong>Comments:</strong> <%= post.comments %></p>
+              <p class="card-text"><strong>Tag:</strong> <%= post.tag %></p>
+              <a href="/posts/<%= post._id %>" class="btn btn-primary">Read More</a>
+              <a href="/posts/<%= post._id %>/edit" class="btn btn-secondary">Edit</a>
+              <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
