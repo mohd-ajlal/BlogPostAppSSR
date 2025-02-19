@@ -6,10 +6,8 @@ const methodOverride = require("method-override");
 const app = express();
 const PORT = 3000;
 
-mongoose.connect("mongodb://127.0.0.1:27017/blog", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log("Connected to MongoDB"))
+mongoose.connect("mongodb://127.0.0.1:27017/blog")
+  .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.log(err));
 
 app.set("view engine", "ejs");
